@@ -2,9 +2,17 @@ FROM debian
 
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y nodejs npm git vim
+    && apt-get install -y wget default-jre
 
-RUN npm install yarn --global && npm install npm --global
+WORKDIR minecraft
 
-# docker build -t node 02_bonus/03
-# docker run --rm -ti node
+RUN wget https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar
+
+RUN echo 'eula=true' > eula.txt
+
+EXPOSE 25565
+
+ENTRYPOINT java -Xmx1024M -Xms1024M -jar server.jar
+
+# docker build -t mine 02_bonus/03
+# docker run --rm -d -p 25565:25565 mine
