@@ -6,11 +6,11 @@ WORKDIR /home/teamspeak
 
 EXPOSE 9987/udp 10011 30033
 
-RUN apt update \
-    && apt upgrade -y \
-    && apt install -y wget bzip2 \
-    && wget http://dl.4players.de/ts/releases/3.3.1/teamspeak3-server_linux_amd64-3.3.1.tar.bz2 \
-    && tar -xvf teamspeak3-server_linux_amd64-3.3.1.tar.bz2
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y wget bzip2
+RUN wget http://dl.4players.de/ts/releases/3.3.1/teamspeak3-server_linux_amd64-3.3.1.tar.bz2 \
+RUN tar -xvf teamspeak3-server_linux_amd64-3.3.1.tar.bz2
 
 WORKDIR teamspeak3-server_linux_amd64
 

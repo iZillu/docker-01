@@ -1,7 +1,7 @@
-FROM ruby
-RUN apt-get update -y && apt-get install -y build-essential libpq-dev nodejs sqlite3
+FROM ruby:2.5
 
-MAINTAINER hmuravch <hmuravch@student.unit.ua>
+RUN apt-get update -y \
+    && apt-get install -y build-essential libpq-dev nodejs sqlite3
 
 ONBUILD COPY app /opt/app
 ONBUILD WORKDIR /opt/app
@@ -11,5 +11,4 @@ ONBUILD RUN bundle install
 ONBUILD RUN rake db:migrate
 ONBUILD RUN rake db:seed
 
-# How to build it?
-# docker build -t ft-rails:on-build .
+# docker build -t ft-rails:on-build 01_dockerfiles/ex02/ft-rails

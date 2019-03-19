@@ -2,7 +2,9 @@ FROM debian
 
 MAINTAINER hmuravch <hmuravch@student.unit.ua>
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y build-essential git
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y build-essential git
 
 # How to build it?
 # docker build -t a01 .
