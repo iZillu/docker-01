@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Dockerfile                                         :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hmuravch <hmuravch@student.unit.ua>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/03/19 10:26:07 by hmuravch          #+#    #+#              #
-#    Updated: 2019/03/19 10:42:21 by hmuravch         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 FROM alpine
 
 ENTRYPOINT printf '\e[93m' \
@@ -21,3 +9,6 @@ ENTRYPOINT printf '\e[93m' \
     && echo '     #+#    #+#          ' \
     && echo '    ###   ########       ' \
     && printf '\e[0m' && sleep 3 && exit
+
+# docker build -t 42 02_bonus/01
+# docker run 42

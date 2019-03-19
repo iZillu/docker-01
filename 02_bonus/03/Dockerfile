@@ -1,18 +1,20 @@
-FROM debian
+FROM debian:jessie
 
+WORKDIR /app
+
+RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
 RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y wget default-jre
+    && apt-get upgrade -y
 
-WORKDIR minecraft
+RUN apt-get install -t -y jessie-backports openjdk-8-jre-headless ca-certificates-java
+RUN apt-get install curl openjdk-8-jre -y
+RUN apt-get clean
 
-RUN wget https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar
+RUN curl https://downloads.lightbend.com/scala/2.12.2/scala-2.12.2.deb > scala.deb
 
-RUN echo 'eula=true' > eula.txt
+RUN dpkg -i scala.deb
 
-EXPOSE 25565
+CMD scala
 
-ENTRYPOINT java -Xmx1024M -Xms1024M -jar server.jar
-
-# docker build -t mine 02_bonus/03
-# docker run --rm -d -p 25565:25565 mine
+# docker build -t scl 02_bonus/03
+# docker run scl
