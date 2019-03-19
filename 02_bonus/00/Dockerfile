@@ -1,13 +1,8 @@
 FROM debian
 
-MAINTAINER hmuravch <hmuravch@student.unit.ua>
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y build-essential git vim
 
-RUN apt-get update && apt-get install -y cowsay fortune lolcat
-
-ENTRYPOINT /usr/games/fortune | /usr/games/cowsay | /usr/games/lolcat
-
-# How to build it?
-# docker build -t a00 .
-
-# How to run it?
-# docker run --rm -ti a00
+# docker build -t ccc 02_bonus/01
+# docker run --rm -ti ccc

@@ -1,11 +1,8 @@
 FROM ubuntu
 
-MAINTAINER hmuravch <hmuravch@student.unit.ua>
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y default-jdk default-jre git vim
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y default-jdk default-jre git vim emacs
-
-# How to build it?
-# docker build -t a04 .
-
-# How to run it?
-# docker run --rm -ti a04
+# docker build -t java 02_bonus/04
+# docker run --rm -ti java

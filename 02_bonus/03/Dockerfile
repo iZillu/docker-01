@@ -1,13 +1,10 @@
-FROM ubuntu
+FROM debian
 
-MAINTAINER hmuravch <hmuravch@student.unit.ua>
-
-RUN apt-get update && apt-get upgrade -y && apt-get install -y nodejs npm git vim emacs
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y nodejs npm git vim
 
 RUN npm install yarn --global && npm install npm --global
 
-# How to build it?
-# docker build -t a03 .
-
-# How to run it?
-# docker run --rm -ti a03
+# docker build -t node 02_bonus/03
+# docker run --rm -ti node
